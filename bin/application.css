@@ -1,0 +1,36 @@
+.root {
+	-fx-background-color: #4CC3D9;
+}
+
+#title {
+	-fx-font-size: 20;
+	-fx-font-weight: bold;
+	-fx-text-fill: white;
+}
+
+#button {
+	-fx-background-color: #F16745;
+	-fx-text-fill: white;
+	-fx-background-radius: 4;
+}
+
+#delete-button {
+	-fx-background-color: #93648D;
+	-fx-text-fill: white;
+}
+#add-button {
+	-fx-background-color: #F16745;
+	-fx-text-fill: white;
+	
+}
+#signout-button {
+	-fx-background-color: #999999;
+	-fx-text-fill: white;
+	
+}
+
+#item {
+	-fx-background-color: white;
+	-fx-background-radius: 2;
+	-fx-padding: 5 20 5 20;
+}
