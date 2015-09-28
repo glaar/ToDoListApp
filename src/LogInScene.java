@@ -53,9 +53,7 @@ public class LogInScene extends Scene {
 		btnLogin.setFocusTraversable(false);
 		btnLogin.setId("button");
 		
-		btnLogin.setOnAction( e -> buttonClicked() );
-		
-		
+		btnLogin.setOnAction( e -> buttonClicked(txtUserName, pf));
 		vbox.getChildren().addAll(title, txtUserName, pf, btnLogin);
 		vbox.setAlignment(Pos.CENTER);
 
@@ -64,28 +62,35 @@ public class LogInScene extends Scene {
 		
 	}
 
-	private void buttonClicked() {
-		validateLogIn();
-		Main.window.setScene(Main.listScene);
+	private void buttonClicked(TextField txtUserName, PasswordField pf) {
+		if (validateLogIn(txtUserName, pf)){
+			Main.listScene = new ListScene(primaryStage);
 			
-		//}
+			Main.window.setScene(Main.listScene);	
+		}
+			
 	}
 
-	private void validateLogIn() {
+	private boolean validateLogIn(TextField txtUserName, PasswordField pf) {
 		try {
 			userList = UserDataAccessor.getUserList();
 			for(int i = 0; i < userList.size(); i++){
 				User user = userList.get(i);
-				System.out.println(user.getUsername());
+				
+				if (user.getUsername().equals(txtUserName.getText())){
+					if (user.getPassword().equals(pf.getText().hashCode())){
+						Main.loggedInUser = user;
+						return true;	
+					}System.out.println("False Password");return false;
+				}System.out.println("False Username");return false;
+			
 			}
-			
-			
 			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		//return false;
+		return false;
 	}
 
 	

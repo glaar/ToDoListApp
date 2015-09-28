@@ -1,3 +1,7 @@
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,6 +15,9 @@ public class ListScene extends Scene {
 	private final Stage primaryStage;
 	private final BorderPane root;
 	
+	private MySQLConnection ntnuMySql;
+	private List<Task> taskList = new ArrayList<>();
+	
 	
 	public ListScene(Stage primaryStage) {
 		
@@ -22,7 +29,7 @@ public class ListScene extends Scene {
 
 		
 		//Title lable
-		Label title = new Label("Brukernavn");
+		Label title = new Label(Main.loggedInUser.getUsername());
 		title.setId("title");
 		
 		//Add list item
@@ -49,11 +56,19 @@ public class ListScene extends Scene {
 		//Liste
 		VBox liste = new VBox(5);
 		liste.setAlignment(Pos.CENTER);
-		for (int i = 1; i<5; i++){
+		
+		try {
+			taskList = TaskDataAccessor.getTaskList(Main.loggedInUser.getIdusers());
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		for (int i = 0; i < taskList.size(); i++){
 			
 			HBox row = new HBox(25);
 			row.setAlignment(Pos.CENTER);
-			Label item = new Label("ToDoStuff...");
+			Label item = new Label(taskList.get(i).getDesc());
 			item.setId("item");
 			Button btnDelete = new Button("Delete");
 			btnDelete.setId("delete-button");

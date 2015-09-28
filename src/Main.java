@@ -11,6 +11,8 @@ public class Main extends Application {
     public static Scene logInScene, listScene;
     public static final int WIDTH = 400, HEIGHT = 500;
     
+    public static User loggedInUser;
+
 	//Oppretter forbindelse med MySQL databasen
 	public static final MySQLConnection MYSQL = new MySQLConnection();
 
@@ -25,7 +27,7 @@ public class Main extends Application {
         
         
         logInScene = new LogInScene(primaryStage);
-        listScene = new ListScene(primaryStage);
+        //listScene = new ListScene(primaryStage);
         
         
         

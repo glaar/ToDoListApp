@@ -7,9 +7,7 @@ public class MySQLConnection {
 	
 	private final String user = "glennchr";
 	private final String password = "mysql123";
-	
-	
-	
+		
 	static Connection connection;
 	
 	public MySQLConnection() {

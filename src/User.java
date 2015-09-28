@@ -1,13 +1,22 @@
-
 public class User {
-	
+
+	private int idusers;
 	private String username;
 	private int password;
 	
 	
-	public User(String username, Integer password){
+	public User(Integer idusers, String username, Integer password){
+		this.idusers = idusers;
 		this.username = username;
 		this.password = password;	
+	}
+	
+	public void setIdusers(Integer idusers){
+		this.idusers = idusers;
+	}
+	
+	public Integer getIdusers(){
+		return idusers;
 	}
 	
 	public void setUsername(String username){
