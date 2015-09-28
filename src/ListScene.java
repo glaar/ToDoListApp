@@ -58,8 +58,10 @@ public class ListScene extends Scene {
 		
 		
 		//Liste
-		VBox liste = new VBox(5);
-		liste.setAlignment(Pos.CENTER);
+		GridPane grid = new GridPane();
+		grid.setVgap(8);
+		grid.setHgap(8);
+		
 		
 		try {
 			taskList = TaskDataAccessor.getTaskList(Main.loggedInUser.getIdusers());
@@ -72,20 +74,23 @@ public class ListScene extends Scene {
 			
 			int idtask = taskList.get(i).getIdtask();
 			
-			HBox row = new HBox(25);
-			row.setAlignment(Pos.CENTER);
 			Label item = new Label(taskList.get(i).getDesc());
 			item.setId("item");
+			GridPane.setConstraints(item, 0, i);	
+			
+			
 			Button btnDelete = new Button("Delete");
+			GridPane.setConstraints(btnDelete, 1, i); 
 			btnDelete.setOnAction( e -> btnDeleteClicked(idtask));
 			btnDelete.setId("delete-button");
-			row.getChildren().addAll(item, btnDelete);
-			liste.getChildren().add(row);
+			
+			grid.getChildren().addAll(item, btnDelete);
+			grid.setAlignment(Pos.CENTER);
 	
 		}
 			
 		
-		root.setCenter(liste);
+		root.setCenter(grid);
 		
 		
 		//Creating Layouts
