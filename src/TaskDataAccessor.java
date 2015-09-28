@@ -36,7 +36,7 @@ public class TaskDataAccessor {
     	
     	preparedStatement.setInt(1, loggedInUserID);
     	preparedStatement.setString(2, desc);
-    	System.out.println(preparedStatement.toString());
+    	//System.out.println(preparedStatement.toString());
     	
     	preparedStatement.executeUpdate();
 
@@ -51,7 +51,7 @@ public class TaskDataAccessor {
     	PreparedStatement preparedStatement = MySQLConnection.connection.prepareStatement(deleteRowSQL);
     	
     	preparedStatement.setInt(1, idtask);
-    	System.out.println(preparedStatement.toString());
+    	//System.out.println(preparedStatement.toString());
  	
     	preparedStatement.executeUpdate();
 
