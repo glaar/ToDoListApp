@@ -39,18 +39,18 @@ public class LogInScene extends Scene {
 		TextField txtUserName = new TextField();
 		txtUserName.setPromptText("Brukernavn");
 		txtUserName.setMaxWidth(150);
-		txtUserName.setFocusTraversable(false);
+		//txtUserName.setFocusTraversable(false);
 		
 		
 		PasswordField pf = new PasswordField();
 		pf.setPromptText("Password");
 		pf.setMaxWidth(150);
-		pf.setFocusTraversable(false);
+		//pf.setFocusTraversable(false);
 		
 		//Creating layout
 		VBox vbox = new VBox(5);		
 		Button btnLogin = new Button("Login");
-		btnLogin.setFocusTraversable(false);
+		//btnLogin.setFocusTraversable(false);
 		btnLogin.setId("button");
 		
 		btnLogin.setOnAction( e -> buttonClicked(txtUserName, pf));
@@ -60,6 +60,7 @@ public class LogInScene extends Scene {
 		//add to scene
 		root.setCenter(vbox);
 		
+	
 	}
 
 	private void buttonClicked(TextField txtUserName, PasswordField pf) {

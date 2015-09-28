@@ -20,6 +20,7 @@ public class ListScene extends Scene {
 	
 	
 	public ListScene(Stage primaryStage) {
+
 		
 		//Definerer alt n�dvendig
 		super(new BorderPane(), Main.WIDTH, Main.HEIGHT);
@@ -37,6 +38,9 @@ public class ListScene extends Scene {
 		addItem.setPromptText("Add item...");
 		Button btnAdd = new Button("Add");
 		btnAdd.setId("add-button");
+		btnAdd.setOnAction( e -> btnAddClicked(addItem));
+		
+		
 		HBox addItemBox = new HBox(15);
 		addItemBox.setPadding(new Insets(0, 0, 20, 0));
 		addItemBox.setAlignment(Pos.CENTER);
@@ -66,23 +70,22 @@ public class ListScene extends Scene {
 		
 		for (int i = 0; i < taskList.size(); i++){
 			
+			int idtask = taskList.get(i).getIdtask();
+			
 			HBox row = new HBox(25);
 			row.setAlignment(Pos.CENTER);
 			Label item = new Label(taskList.get(i).getDesc());
 			item.setId("item");
 			Button btnDelete = new Button("Delete");
+			btnDelete.setOnAction( e -> btnDeleteClicked(idtask));
 			btnDelete.setId("delete-button");
 			row.getChildren().addAll(item, btnDelete);
 			liste.getChildren().add(row);
 	
 		}
+			
 		
-		VBox centerBox = new VBox(30);
-		centerBox.setAlignment(Pos.CENTER);
-		centerBox.getChildren().addAll(liste);
-		
-		
-		root.setCenter(centerBox);
+		root.setCenter(liste);
 		
 		
 		//Creating Layouts
@@ -97,9 +100,31 @@ public class ListScene extends Scene {
 		
 		
 	}
+	
+
+	private void btnDeleteClicked(int idtask) {
+		try {
+			TaskDataAccessor.deleteTask(idtask);
+			Main.listScene = new ListScene(primaryStage);
+			Main.window.setScene(Main.listScene);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	private void buttonClicked() {
 		Main.window.setScene(Main.logInScene);
+	}
+	
+	private void btnAddClicked(TextField addItem){
+		try {
+			TaskDataAccessor.insertTask(Main.loggedInUser.getIdusers(), addItem.getText());
+			Main.listScene = new ListScene(primaryStage);
+			Main.window.setScene(Main.listScene);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
