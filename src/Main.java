@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static Stage window;
-    public static Scene logInScene, listScene;
+    public static Scene logInScene, listScene, newUserScene;
     public static final int WIDTH = 400, HEIGHT = 500;
     
     public static User loggedInUser;

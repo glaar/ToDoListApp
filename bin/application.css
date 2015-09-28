@@ -29,6 +29,12 @@
 	
 }
 
+#btnSignUp {
+	-fx-background-color: #7BC8A4;
+	-fx-text-fill: white;
+	
+}
+
 #item {
 	-fx-background-color: white;
 	-fx-background-radius: 2;

@@ -15,7 +15,6 @@ public class LogInScene extends Scene {
 	private final Stage primaryStage;
 	private final BorderPane root;
 	
-	private String username;
 	private String password;
 	
 	private MySQLConnection ntnuMySql;
@@ -28,6 +27,7 @@ public class LogInScene extends Scene {
 		root = (BorderPane) super.getRoot();
 		this.primaryStage = primaryStage;
 		getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		
 
 		
 		//Title lable
@@ -56,6 +56,18 @@ public class LogInScene extends Scene {
 		btnLogin.setOnAction( e -> buttonClicked(txtUserName, pf));
 		vbox.getChildren().addAll(title, txtUserName, pf, btnLogin);
 		vbox.setAlignment(Pos.CENTER);
+		
+		//SignUpButton
+		Button btnSignUp = new Button("Sign up");
+		VBox bottomVBox = new VBox();
+		btnSignUp.setId("btnSignUp");
+		bottomVBox.getChildren().add(btnSignUp);
+		bottomVBox.setAlignment(Pos.BOTTOM_RIGHT);
+		
+		btnSignUp.setOnAction( e -> btnSignUpClicked());
+
+		root.setBottom(bottomVBox);
+		
 
 		//add to scene
 		root.setCenter(vbox);
@@ -93,7 +105,12 @@ public class LogInScene extends Scene {
 		}
 		return false;
 	}
-
 	
+	private void btnSignUpClicked() {
+			Main.newUserScene = new newUserScene(primaryStage);	
+			Main.window.setScene(Main.newUserScene);	
+		}
 }
+			
+	
 		

@@ -29,7 +29,7 @@ public class newUserScene extends Scene {
 
 		
 		//Title lable
-		Label title = new Label("ToDoList");
+		Label title = new Label("SignUp");
 		title.setId("title");
 		
 		
@@ -37,22 +37,22 @@ public class newUserScene extends Scene {
 		TextField txtUserName = new TextField();
 		txtUserName.setPromptText("Brukernavn");
 		txtUserName.setMaxWidth(150);
-		//txtUserName.setFocusTraversable(false);
+		txtUserName.setFocusTraversable(false);
 		
 		
 		PasswordField pf = new PasswordField();
 		pf.setPromptText("Password");
 		pf.setMaxWidth(150);
-		//pf.setFocusTraversable(false);
+		pf.setFocusTraversable(false);
 		
 		//Creating layout
 		VBox vbox = new VBox(5);		
-		Button btnLogin = new Button("Login");
-		//btnLogin.setFocusTraversable(false);
-		btnLogin.setId("button");
+		Button btnSignUp = new Button("SignUp");
+		btnSignUp.setFocusTraversable(false);
+		btnSignUp.setId("button");
 		
-		btnLogin.setOnAction( e -> buttonClicked(txtUserName, pf));
-		vbox.getChildren().addAll(title, txtUserName, pf, btnLogin);
+		btnSignUp.setOnAction( e -> buttonClicked(txtUserName, pf));
+		vbox.getChildren().addAll(title, txtUserName, pf, btnSignUp);
 		vbox.setAlignment(Pos.CENTER);
 
 		//add to scene
