@@ -54,6 +54,17 @@ public class newUserScene extends Scene {
 		btnSignUp.setOnAction( e -> buttonClicked(txtUserName, pf));
 		vbox.getChildren().addAll(title, txtUserName, pf, btnSignUp);
 		vbox.setAlignment(Pos.CENTER);
+		
+		//SignUpButton
+		Button btnLogin = new Button("Login");
+		VBox bottomVBox = new VBox();
+		btnLogin.setId("btnSignUp");
+		bottomVBox.getChildren().add(btnLogin);
+		bottomVBox.setAlignment(Pos.BOTTOM_RIGHT);
+		
+		btnLogin.setOnAction( e -> btnBackClicked());
+
+		root.setBottom(bottomVBox);
 
 		//add to scene
 		root.setCenter(vbox);
@@ -62,8 +73,26 @@ public class newUserScene extends Scene {
 	}
 
 	private void buttonClicked(TextField txtUserName, PasswordField pf) {
+		
+		String username = txtUserName.getText();
+		
+		String password = pf.getText();
+		Integer hashcode = password.hashCode();
+		password = hashcode.toString();
+	
+	
+		try {
+			UserDataAccessor.insertUser(username, password);
+			Main.window.setScene(Main.logInScene);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 			
+	}
+	
+	private void btnBackClicked(){
+		Main.window.setScene(Main.logInScene);
 	}
 
 
