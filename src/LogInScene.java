@@ -82,8 +82,8 @@ public class LogInScene extends Scene {
 					if (user.getPassword().equals(pf.getText().hashCode())){
 						Main.loggedInUser = user;
 						return true;	
-					}System.out.println("False Password");return false;
-				}System.out.println("False Username");return false;
+					};
+				};
 			
 			}
 			
