@@ -6,7 +6,7 @@ public class MySQLConnection {
 	private final String url = "jdbc:mysql://mysql.stud.ntnu.no:3306/glennchr_app";
 	
 	private final String user = "glennchr";
-	private final String password = "mysql123";
+	private final String password = "######";
 		
 	static Connection connection;
 	
